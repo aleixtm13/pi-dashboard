@@ -1,8 +1,8 @@
-# Build Stage
-FROM --platform=linux/amd64 node:20-alpine AS build
+# Build Stage (Use arm64 base image for Raspberry Pi)
+FROM --platform=linux/arm64 node:20-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --no-audit --no-fund
+RUN npm install
 COPY . .
 RUN npm run build
 # Production Stage
