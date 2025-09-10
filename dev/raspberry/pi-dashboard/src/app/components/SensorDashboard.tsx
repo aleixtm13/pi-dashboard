@@ -15,7 +15,8 @@ export default function SensorDashboard() {
 
   const [error, setError] = useState<string | null>(null);
 
-  const apiUrl = "http://192.168.0.18:8000/data";
+  const baseApiUrl = process.env.NEXT_PUBLIC_API_URL || "http://192.168.0.18:8000/";
+  const apiUrl = `${baseApiUrl}data`;
 
   const fetchSensorData = async () => {
     try {
